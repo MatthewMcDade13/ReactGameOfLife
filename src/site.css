@@ -1,0 +1,60 @@
+.cell {
+    border-style: solid;
+    border-width: 1px;
+    width: 1rem;
+    height: 1rem;
+}
+
+.cell-small {
+    border-style: solid;
+    border-width: 1px;
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+body {
+    text-align: center;
+    background-color: #431f1f;
+    color: white;
+    font-family: 'Press Start 2P', sans-serif;
+}
+
+table {
+    margin: auto;
+    margin-top: 100px;
+    background-color: black;
+    border-collapse: collapse;
+    box-shadow: 0 0 25px 5px black;
+}
+
+table tr td {
+    border-color: #333;
+}
+
+button.btn
+{
+    background: none;
+    color: white;
+    border: 3px solid white;
+    margin: 5px;
+}
+
+#buttonArea
+{
+    background-color: #090f0f;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-top: 25px;
+    text-align: center;;
+}
+
+#buttonArea h6
+{
+    margin-top: 10px;
+    text-decoration: underline;
+}
+
+.statValue
+{
+    color: red;
+}
