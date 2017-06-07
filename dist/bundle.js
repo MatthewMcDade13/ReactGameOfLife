@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -98,11 +98,11 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var Cell_1 = __webpack_require__(3);
-var Cell_2 = __webpack_require__(6);
-var CellRow_1 = __webpack_require__(4);
-var ButtonMenu_1 = __webpack_require__(7);
-var StatsNavbar_1 = __webpack_require__(8);
+var Cell_1 = __webpack_require__(4);
+var Cell_2 = __webpack_require__(8);
+var CellRow_1 = __webpack_require__(5);
+var ButtonMenu_1 = __webpack_require__(3);
+var StatsNavbar_1 = __webpack_require__(6);
 var GameOfLife = (function (_super) {
     __extends(GameOfLife, _super);
     function GameOfLife(props) {
@@ -313,6 +313,40 @@ module.exports = ReactDOM;
 
 "use strict";
 
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+function ButtonMenu(props) {
+    return (React.createElement("div", { id: "buttonArea", className: "row" },
+        React.createElement("div", { className: "col-lg-3" },
+            React.createElement("h6", null, "Start/Stop"),
+            React.createElement("button", { className: "btn btn-secondary", onClick: props.startGame }, "Start"),
+            React.createElement("button", { className: "btn btn-secondary", onClick: props.pauseGame }, "Pause")),
+        React.createElement("div", { className: "col-lg-3" },
+            React.createElement("h6", null, "Board Size"),
+            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGridSize, value: "Small" }, "Small"),
+            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGridSize, value: "Medium" }, "Medium"),
+            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGridSize, value: "Large" }, "Large"),
+            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGridSize, value: "Massive" }, "Massive")),
+        React.createElement("div", { className: "col-lg-3" },
+            React.createElement("h6", null, "Game Speed"),
+            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGameSpeed, value: "Slow" }, "Slow"),
+            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGameSpeed, value: "Medium" }, "Medium"),
+            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGameSpeed, value: "Fast" }, "Fast"),
+            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGameSpeed, value: "Warp Speed" }, "Warp Speed")),
+        React.createElement("div", { className: "col-lg-3" },
+            React.createElement("h6", null, "Clear/Randomize"),
+            React.createElement("button", { className: "btn btn-secondary", onClick: props.clearBoard }, "Clear Board"),
+            React.createElement("button", { className: "btn btn-secondary", onClick: props.randomizeBoard }, "Randomize"))));
+}
+exports.ButtonMenu = ButtonMenu;
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -351,7 +385,7 @@ exports.Cell = Cell;
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -365,7 +399,80 @@ exports.CellRow = CellRow;
 
 
 /***/ }),
-/* 5 */
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+function StatsNavbar(props) {
+    var speed = "";
+    var size = "";
+    switch (props.size) {
+        //small
+        case 25:
+            size = "Small";
+            break;
+        //medium
+        case 40:
+            size = "Medium";
+            break;
+        //large
+        case 75:
+            size = "Large";
+            break;
+        //massive
+        case 100:
+            size = "Massive";
+            break;
+    }
+    switch (props.speed) {
+        //slow
+        case 400:
+            speed = "Slow";
+            break;
+        //medium
+        case 250:
+            speed = "Medium";
+            break;
+        //fast
+        case 50:
+            speed = "Fast";
+            break;
+        //warp speed
+        case 0:
+            speed = "Warp Speed";
+            break;
+    }
+    return (React.createElement("div", null,
+        React.createElement("nav", { className: "navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse" },
+            React.createElement("button", { className: "navbar-toggler navbar-toggler-right", type: "button", "data-toggle": "collapse", "data-target": "#navbarNavAltMarkup", "aria-controls": "navbarNavAltMarkup", "aria-expanded": "false", "aria-label": "Toggle navigation" },
+                React.createElement("span", { className: "navbar-toggler-icon" })),
+            React.createElement("a", { className: "navbar-brand", href: "#" }, "Conway's Game of Life"),
+            React.createElement("div", { className: "collapse navbar-collapse", id: "navbarNavAltMarkup" },
+                React.createElement("ul", { className: "navbar-nav ml-auto" },
+                    React.createElement("li", { className: "nav-item active" },
+                        "Generation: ",
+                        React.createElement("span", { className: "statValue" },
+                            props.generation,
+                            "\u00A0")),
+                    React.createElement("li", { className: "nav-item active" },
+                        "Game Size: ",
+                        React.createElement("span", { className: "statValue" },
+                            size,
+                            "\u00A0")),
+                    React.createElement("li", { className: "nav-item active" },
+                        "Game Speed: ",
+                        React.createElement("span", { className: "statValue" },
+                            speed,
+                            "\u00A0")))))));
+}
+exports.StatsNavbar = StatsNavbar;
+
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -378,7 +485,7 @@ ReactDOM.render(React.createElement(GameOfLife_1.GameOfLife, null), document.get
 
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -466,113 +573,6 @@ var CellModel = (function () {
     return CellModel;
 }());
 exports.CellModel = CellModel;
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-function ButtonMenu(props) {
-    return (React.createElement("div", { id: "buttonArea", className: "row" },
-        React.createElement("div", { className: "col-lg-3" },
-            React.createElement("h6", null, "Start/Stop"),
-            React.createElement("button", { className: "btn btn-secondary", onClick: props.startGame }, "Start"),
-            React.createElement("button", { className: "btn btn-secondary", onClick: props.pauseGame }, "Pause")),
-        React.createElement("div", { className: "col-lg-3" },
-            React.createElement("h6", null, "Board Size"),
-            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGridSize, value: "Small" }, "Small"),
-            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGridSize, value: "Medium" }, "Medium"),
-            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGridSize, value: "Large" }, "Large"),
-            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGridSize, value: "Massive" }, "Massive")),
-        React.createElement("div", { className: "col-lg-3" },
-            React.createElement("h6", null, "Game Speed"),
-            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGameSpeed, value: "Slow" }, "Slow"),
-            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGameSpeed, value: "Medium" }, "Medium"),
-            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGameSpeed, value: "Fast" }, "Fast"),
-            React.createElement("button", { className: "btn btn-secondary", onClick: props.setGameSpeed, value: "Warp Speed" }, "Warp Speed")),
-        React.createElement("div", { className: "col-lg-3" },
-            React.createElement("h6", null, "Clear/Randomize"),
-            React.createElement("button", { className: "btn btn-secondary", onClick: props.clearBoard }, "Clear Board"),
-            React.createElement("button", { className: "btn btn-secondary", onClick: props.randomizeBoard }, "Randomize"))));
-}
-exports.ButtonMenu = ButtonMenu;
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-function StatsNavbar(props) {
-    var speed = "";
-    var size = "";
-    switch (props.size) {
-        //small
-        case 25:
-            size = "Small";
-            break;
-        //medium
-        case 40:
-            size = "Medium";
-            break;
-        //large
-        case 75:
-            size = "Large";
-            break;
-        //massive
-        case 100:
-            size = "Massive";
-            break;
-    }
-    switch (props.speed) {
-        //slow
-        case 400:
-            speed = "Slow";
-            break;
-        //medium
-        case 250:
-            speed = "Medium";
-            break;
-        //fast
-        case 50:
-            speed = "Fast";
-            break;
-        //warp speed
-        case 0:
-            speed = "Warp Speed";
-            break;
-    }
-    return (React.createElement("div", null,
-        React.createElement("nav", { className: "navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse" },
-            React.createElement("button", { className: "navbar-toggler navbar-toggler-right", type: "button", "data-toggle": "collapse", "data-target": "#navbarNavAltMarkup", "aria-controls": "navbarNavAltMarkup", "aria-expanded": "false", "aria-label": "Toggle navigation" },
-                React.createElement("span", { className: "navbar-toggler-icon" })),
-            React.createElement("a", { className: "navbar-brand", href: "#" }, "Conway's Game of Life"),
-            React.createElement("div", { className: "collapse navbar-collapse", id: "navbarNavAltMarkup" },
-                React.createElement("ul", { className: "navbar-nav ml-auto" },
-                    React.createElement("li", { className: "nav-item active" },
-                        "Generation: ",
-                        React.createElement("span", { className: "statValue" },
-                            props.generation,
-                            "\u00A0")),
-                    React.createElement("li", { className: "nav-item active" },
-                        "Game Size: ",
-                        React.createElement("span", { className: "statValue" },
-                            size,
-                            "\u00A0")),
-                    React.createElement("li", { className: "nav-item active" },
-                        "Game Speed: ",
-                        React.createElement("span", { className: "statValue" },
-                            speed,
-                            "\u00A0")))))));
-}
-exports.StatsNavbar = StatsNavbar;
 
 
 /***/ })
